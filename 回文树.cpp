@@ -41,4 +41,26 @@ bool isPalindrome(int x){
 }
 
 
-//如果要用数字的转换，注意越界的处理
+
+//利用temp保存数字x，然后对数字x进行反向存储到res中
+bool isPalindrome(int x){
+
+    //定义时为了防止越界，需要用long定义
+    long res = 0;
+    long temp = x;
+
+    //去掉一些不必要的数字
+    if(x < 0||(x % 10 == 0 &&x > 0))
+       return false;
+
+    //将数字x反向存储到res中
+    while(x != 0)
+    {
+        res = res*10 + x % 10;
+        x/=10;
+    }
+
+    //最后返回
+    return res==temp?true:false;
+
+}
