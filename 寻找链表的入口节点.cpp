@@ -9,7 +9,7 @@
 typedef struct ListNode ListNode;
 struct ListNode *detectCycle(struct ListNode *head) {
     
-    //监测数据是否为空
+    //检测数据是否为空
     if(head == NULL)
         return NULL;
 
