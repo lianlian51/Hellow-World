@@ -1,0 +1,19 @@
+bool isLongPressedName(char * name, char * typed){
+
+    while(*name != '\0' && *typed != '\0')
+    {
+        //如果*name和*typed的值相等，则同时往后走一步
+        if(*name == *typed)
+        {
+            *name++;
+        }
+        //否则*typed往后走一步
+        *typed++;
+    }
+
+    //判断*name是否走完
+    if(*name == '\0')
+        return true;
+    else
+        return false;
+}
