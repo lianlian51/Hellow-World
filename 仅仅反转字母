@@ -1,0 +1,32 @@
+//思路：先把字母全部存放在ch中，之后在进行遍历，把字母反向放回去
+char * reverseOnlyLetters(char * S){
+    int i;
+    int j = 0;
+    //求出S的长度
+    int len = strlen(S);
+    char* ch = (char*)malloc(strlen(S)+1);
+
+    for(i = 0;i < len;i++)
+    {
+        //判定，只将字母放进去
+        if(S[i]>='A'&&S[i]<='Z' || S[i]>='a'&&S[i]<='z')
+        {
+            ch[j] = S[i];
+            j++;
+            //S[i]置为空，方便之后遍历
+            S[i] = ' ';
+        }
+    }
+
+    //再次遍历，寻找为空的位置，然后把字母放回去
+    for(i = 0;i < len;i++)
+    {
+        if(S[i] == ' ')
+        {
+            S[i] = ch[j-1];
+            j--;
+        }
+    }
+
+    return S;
+}
