@@ -1,0 +1,74 @@
+//判断两个链表是有交点
+
+typedef int DataType;
+struct ListNode{
+	DataType val;
+	struct ListNode* next;
+};
+typedef ListNode Node;
+
+//带环：两个链表都带环
+//不带环：两个链表都不带环
+
+//1.先判断两个链表是否带环
+//利用快慢指针判断链表是否有环
+Node* hasCircle(Node* L1)
+{
+	Node* slow = L1;
+	Node* fast = L1;
+	while (fast && fast->next)
+	{
+		fast = fast->next->next;
+		slow = slow->next;
+		if (slow == fast)
+			return slow;//返回slow指针的地址
+	}
+	return NULL;
+}
+
+//2.判断是否有交点
+Node* is2ListCross(Node* L1, Node* L2)
+{
+  //将返回的值赋给pm1，pm2；
+	Node* pm1 = hasCircle(L1);
+	Node* pm2 = hasCircle(L2);
+	if (pm1 == NULL && pm2 == NULL)
+	{
+    //不带环判断方法：看两个链表最后一个节点是否相等
+		Node* cur1 = L1;
+		Node* cur2 = L2;
+		while (cur1->next)
+		{
+			cur1 = cur1->next;
+		}
+		while (cur2->next)
+		{
+			cur2 = cur2->next;
+		}
+
+		if (cur1 == cur2)
+		{
+			return 1;//1代表一定两个不带环的链表一定有交点
+		}
+		return NULL;
+	}
+	else if (pm1 &&pm2)
+	{
+    //带环判断：pm1，pm2如果在一个环内，则遍历一遍一定会相遇
+		Node* cur = pm1;
+		//循环要从next开始，不然就直接退出了，但是咬住一个点，这样会少检测一个点，即pm1的前一个点
+		while (cur->next != pm1)
+		{
+			cur = cur->next;
+			if (cur == pm2)
+				return 2;//2代表的是带环有交点
+		}
+		if (cur == pm2)
+			return 2;
+		return NULL;
+	}
+	else
+	{
+		return 0;
+	}
+}
