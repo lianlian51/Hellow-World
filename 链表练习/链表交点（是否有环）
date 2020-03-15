@@ -5,7 +5,7 @@ struct ListNode{
 	DataType val;
 	struct ListNode* next;
 };
-typedef ListNode Node;
+typedef struct ListNode Node;
 
 //带环：两个链表都带环
 //不带环：两个链表都不带环
