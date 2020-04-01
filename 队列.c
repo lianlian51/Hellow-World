@@ -112,7 +112,7 @@ void QueuePop(Queue* q)
 	
 	//如果此时队列为空
 	if (q->_size == 0)
-		q->head = q->rear;
+		q->rear = q->head;
 }
 
 //有效元素的个数
