@@ -108,6 +108,11 @@ void QueuePop(Queue* q)
 	q->head->next = pdelNode->next;
 	free(pdelNode);
 	q->_size--;
+	
+	
+	//如果此时队列为空
+	if (q->_size == 0)
+		q->head = q->rear;
 }
 
 //有效元素的个数
