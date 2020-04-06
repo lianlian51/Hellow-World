@@ -1,0 +1,127 @@
+#pragma once 
+typedef int QDataType;
+
+
+//此时需要注意的是结构体的建立
+//第二个结构体的建立需要用QNode来，Queue会出错误
+//用QNode可以将两个结构体链接起来
+
+//若链接不成功，一定是结构体出粗了
+
+
+typedef struct QNode{
+    struct QNode* next;
+    QDataType val;
+}QNode;
+
+typedef struct Queue{
+    struct QNode* head;
+    struct QNode* rear;
+    QDataType _size;
+}Queue;
+
+void QueueInit(Queue* q);
+
+void QueuePush(Queue* q, int val);
+
+void QueuePop(Queue* q);
+
+QDataType QueueFront(Queue* q);
+
+QDataType QueueBack(Queue* q);
+
+int QueueSize(Queue* q);
+
+int QueueEmpty(Queue* q);
+
+
+
+
+
+#include "Queue.h"
+#include <stddef.h>
+#include <malloc.h>
+#include <assert.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+
+//建立节点，判断是否建立成功，节点是QNode*
+//最后赋值，然后返回
+QNode* BuyNode(int val)
+{
+    QNode* NewNode = (QNode*)malloc(sizeof(QNode));
+    if (NULL == NewNode)
+    {
+        assert(0);
+        return NULL;
+    }
+
+    NewNode->next = NULL;
+    NewNode->val = val;
+
+    return NewNode;//记得返回
+}
+
+
+int QueueEmpty(Queue* q)
+{
+    assert(q);
+    return 0 == q->_size;
+}
+
+
+void QueueInit(Queue* q)
+{
+    assert(q);
+    q->head = BuyNode(0);
+    q->rear = q->head;
+    q->_size = 0;
+}
+
+
+//入队列先建立节点，然后将节点连接上去
+//然后挪动q->rear
+//最后有效元素个数++
+void QueuePush(Queue* q, int val)
+{
+    assert(q);
+    QNode* NewNode = BuyNode(val);
+    q->rear->next = NewNode;
+    q->rear = NewNode;
+    q->_size++;
+}
+
+
+//创建一个删除节点，然后标记删除的位置
+//将q->head往后挪一下，在删除节点delNode
+void QueuePop(Queue* q)
+{
+    QNode* delNode = NULL;
+    assert(q);
+    if (QueueEmpty(q))
+        return;
+
+    delNode = q->head->next;
+    q->head->next = delNode->next;
+    free(delNode);
+    q->_size--;
+}
+
+QDataType QueueFront(Queue* q)
+{
+    assert(!QueueEmpty(q));
+    return q->head->next->val;
+}
+
+QDataType QueueBack(Queue* q)
+{
+    assert(q);
+    return q->rear->val;
+}
+
+int QueueSize(Queue* q)
+{
+    assert(q);
+    return q->_size;
+}
