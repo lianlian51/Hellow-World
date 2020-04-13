@@ -1,0 +1,69 @@
+char * addBinary(char * a, char * b){
+    //分别算出字符串的长度
+    int m = strlen(a);
+    int n = strlen(b);
+
+    //下标访问
+    int i = m - 1;
+    int j = n - 1;
+    //往新建的数组放元素
+    int p = 0;
+
+    //位置数组加起来
+    int cut = 0;
+    //控制进位
+    int k = 0;
+
+    int* arr = (int*)malloc(sizeof(int)*(m+n));
+
+    //两个字符串从后往前遍历，然后放到arr中，这个是从前往后放的
+    while(i > -1 && j > -1)
+    {
+        cut = a[i--] - '0' + b[j--] - '0' + k;
+        //cut = 2,3   k = 1,1
+        k = cut / 2;
+        cut %= 2;
+        arr[p++] = cut;
+    }
+
+    //将没有加完的元素放到arr中
+    while(i > -1)
+    {
+        cut = a[i--] - '0' + k;
+        k = cut / 2;
+        cut %= 2;
+        arr[p++] = cut;
+    }
+
+    while(j > -1)
+    {
+        cut = b[j--] - '0' + k;
+        k = cut / 2;
+        cut %= 2;
+        arr[p++] = cut;
+    }
+
+    if(k > 0)
+       arr[p++] = k;
+
+    //逆置
+    for(i = 0, j = p - 1;i < j; i++, j--)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    //准备将arr中的元素放进去
+    char* ret = (char*)malloc(sizeof(char)*(p+1));
+
+    for(i = 0; i < p; i++)
+    {
+        ret[i] = arr[i] + '0';
+    }
+
+    //字符串以‘\0’结尾
+    ret[p] = '\0';
+
+    return ret;
+}
