@@ -64,7 +64,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AVLTree.hpp" />
     <ClInclude Include="BSTree.hpp" />
+    <ClInclude Include="hashBucket.hpp" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="RBTree.hpp" />
+    <ClInclude Include="set.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="testBST.cpp" />

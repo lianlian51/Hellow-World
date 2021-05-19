@@ -18,6 +18,21 @@
     <ClInclude Include="BSTree.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="AVLTree.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTree.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="hashBucket.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="testBST.cpp">
