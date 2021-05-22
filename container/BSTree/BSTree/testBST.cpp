@@ -79,14 +79,20 @@ int main()
 // #include "RBTree.hpp"
 // #include "map.h"
 // #include "set.h"
+// #include "hashBucket.hpp"
+//#include "unordered_map.h"
+#include "unordered_set.h"
 
-#include "hashBucket.hpp"
 int main()
 {
 	// TestAVLTree();
 	// TestRBTree();
 	// TestMap();
 	// TestSet();
-	TestHashBucket();
+	// TestHashBucket();
+	// TestHashBucket1();
+	// TestHashBucket2();
+	// TestUnorderedMap();
+	TestUnorderedSet();
 	return 0;
 }

@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C46F550-8AF7-4282-90BB-6F116648BFE8}</ProjectGuid>
-    <RootNamespace>BSTree</RootNamespace>
+    <ProjectGuid>{900C289D-EAE8-4BE5-A32A-C2621F1A200F}</ProjectGuid>
+    <RootNamespace>Trie</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,18 +64,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AVLTree.hpp" />
-    <ClInclude Include="BSTree.hpp" />
-    <ClInclude Include="Common.h" />
-    <ClInclude Include="hashBucket.hpp" />
-    <ClInclude Include="map.h" />
-    <ClInclude Include="RBTree.hpp" />
-    <ClInclude Include="set.h" />
-    <ClInclude Include="unordered_map.h" />
-    <ClInclude Include="unordered_set.h" />
+    <ClInclude Include="Trie.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testBST.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
